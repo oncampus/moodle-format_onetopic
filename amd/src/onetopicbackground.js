@@ -21,7 +21,6 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 import $ from 'jquery';
-import ModalFactory from 'core/modal_factory';
 import ModalSaveCancel from 'core/modal_save_cancel';
 import ModalEvents from 'core/modal_events';
 
@@ -76,14 +75,13 @@ export const init = (controlid) => {
         });
     };
 
-    ModalFactory.create({
+    ModalSaveCancel.create({
         'title': title,
         'body': $controlwindow,
-        'type': ModalSaveCancel.TYPE,
         'large': true,
         'buttons': buttons
     })
-    .done(function(modal) {
+    .then(function(modal) {
         var $modalBody = modal.getBody();
         $modalBody.append($controlwindow);
         $control.data('modal', modal);

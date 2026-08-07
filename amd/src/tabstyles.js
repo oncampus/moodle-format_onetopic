@@ -21,7 +21,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 import $ from 'jquery';
-import ModalFactory from 'core/modal_factory';
+import Modal from 'core/modal';
 
 var $tabstyles = null;
 var $styleswindow = null;
@@ -141,10 +141,10 @@ export const init = () => {
     var title = $styleswindow.data('title');
 
     // Initialize the modal window.
-    ModalFactory.create({
+    Modal.create({
         'title': title,
         'body': ''
-    }).done(function(modal) {
+    }).then(function(modal) {
         var $modalBody = modal.getBody();
         $styleswindow.show();
         $modalBody.append($styleswindow);
